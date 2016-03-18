@@ -1,0 +1,7 @@
+DECLARE @Constratint_Name sysname = (SELECT top 1 name FROM sys.default_constraints where parent_object_id = object_id('Boxes') and parent_column_id = (SELECT column_id from sys.columns where name = 'Last_change_branchkey' and object_id = object_id('Boxes')))
+DECLARE @SQLString nvarchar(500) = 'ALTER TABLE Boxes DROP CONSTRAINT ' + @Constratint_Name;
+EXEC sp_executesql @SQLString
+
+ALTER TABLE Boxes ALTER COLUMN Last_change_branchkey varchar(6) not null;
+
+ALTER TABLE Boxes ADD CONSTRAINT DF_Boxes_Last_change_branchkey DEFAULT '  ' for Last_change_branchkey;
