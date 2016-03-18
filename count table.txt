@@ -1,0 +1,19 @@
+select 'boxalias',count(1) from boxalias union
+ select 'boxes' ,count(1)  from boxes union
+ select 'boxprice',count(1)from boxprice union
+ select 'BoxPriceChange',count(1)from BoxPriceChange union
+ select 'branches', count(1) from branches union
+ select 'category' ,count(1) from category union
+ select 'categorydetail', count(1) from categorydetail union
+ select 'Charity',count(1) from charity union
+ select 'checklist',count(1) from checklist union
+ select 'checklistdetails',count(1) from checklistdetails union
+ select 'checklistitems',count(1) from checklistitems union
+ select 'elasticity', count(1) from elasticity union
+ select 'LocationBranches',count(1) from LocationBranches union
+ select 'locations',count(1) from locations  union
+ select 'Productline',count(1) from Productline union
+ select 'Productlinecat',count(1) from Productlinecat union
+select 'Rmastorebranches',count(1) from Rmastorebranches union
+ select 'Staff',count(1) from staff union
+ select 'usres',count(1) from users 

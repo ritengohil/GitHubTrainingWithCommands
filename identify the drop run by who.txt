@@ -1,0 +1,24 @@
+select [Transaction ID],
+    Operation,
+    Context,
+    AllocUnitName from fn_dblog(NULL, NULL)   where Operation like '%DROPOBJ%'
+
+
+
+
+select Operation,
+    [Transaction ID],
+    [Begin Time],
+    [Transaction Name],
+    [Transaction SID] from
+fn_dblog(NULL, NULL)
+WHERE
+    [Transaction ID] = '0000:000036cc'
+
+
+
+
+
+	USE MASTER
+GO   
+SELECT SUSER_SNAME(0x010500000000000515000000A614B3B06A00C0F00C8D9BB8EB030000)
