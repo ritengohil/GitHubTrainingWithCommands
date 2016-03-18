@@ -1,0 +1,2 @@
+-- give details of the space used for DB table and other objects 
+ EXEC sys.sp_spaceused 

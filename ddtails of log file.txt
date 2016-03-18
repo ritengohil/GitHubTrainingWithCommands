@@ -1,0 +1,11 @@
+-- Get the details of the log file 
+DBCC SQLPERF (LOGSPACE);
+
+
+-- In addition, you can also use DBCC SQLPERF to reset the statistics gathered on Waits and Latches by issuing commands to clear them.
+
+DBCC SQLPERF("sys.dm_os_latch_stats" , CLEAR);
+DBCC SQLPERF("sys.dm_os_wait_stats" , CLEAR);
+GO
+
+

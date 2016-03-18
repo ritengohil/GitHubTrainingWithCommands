@@ -1,0 +1,56 @@
+Look at the scripts below used to sync up the data from store to nat, if this can be run from the store, can Alok and Partha do the sync up? There are too many stores and I think we will need help from these 2 do the complete sync up.
+
+
+insert into uksupdb01.epos2000.dbo.Banking_Branches
+select * from Banking_Branches  where BankingBrancheID not in
+(select BankingBrancheID from uksupdb01.epos2000.dbo.Banking_Branches as nat where nat.BranchKey='YR')
+
+insert into uksupdb01.epos2000.dbo.Banking_Data
+select * from Banking_Data  where Z_ID not in
+(select Z_ID from uksupdb01.epos2000.dbo.Banking_Data as nat where nat.BranchKey='YR')
+insert into uksupdb01.epos2000.dbo.Banking_LineComment
+select * from Banking_LineComment  where EntryID not in
+(select EntryID from uksupdb01.epos2000.dbo.Banking_LineComment as nat where nat.BranchKey='YR')
+insert into uksupdb01.epos2000.dbo.Banking_lines
+select * from Banking_lines  where entryid not in
+(select entryid from uksupdb01.epos2000.dbo.Banking_lines as nat where nat.BranchKey='YR')
+
+insert into uksupdb01.epos2000.dbo.Banking
+select * from Banking  where z_id not in
+(select z_id from uksupdb01.epos2000.dbo.Banking as nat where nat.BranchKey='YR')
+
+
+insert into uksupdb01.epos2000.dbo.order_details
+select * from order_details  where order_details_id not in
+(select order_details_id from uksupdb01.epos2000.dbo.order_details as nat where nat.BranchKey='YR') and branchkey ='yr'
+insert into uksupdb01.epos2000.dbo.OrderPaymentElements
+select * from OrderPaymentElements  where OPEID not in
+(select OPEID from uksupdb01.epos2000.dbo.OrderPaymentElements as nat where nat.BranchKey='YR') and branchkey ='yr'
+insert into uksupdb01.epos2000.dbo.OrderDetailCategories
+select * from OrderDetailCategories  where ODMID not in
+(select ODMID from uksupdb01.epos2000.dbo.OrderDetailCategories as nat where nat.BranchKey='YR') and branchkey ='yr'
+insert into uksupdb01.epos2000.dbo.OrderCharityElement
+select * from OrderCharityElement  where orderid not in
+(select orderid from uksupdb01.epos2000.dbo.OrderCharityElement as nat where nat.BranchKey='YR') and branchkey ='yr'
+
+insert into uksupdb01.epos2000.dbo.orders
+select * from orders  where order_id not in
+(select order_id from uksupdb01.epos2000.dbo.orders as nat where nat.BranchKey='YR') and branchkey ='yr'
+insert into uksupdb01.epos2000.dbo.Refunds
+select * from Refunds  where orderid not in
+(select orderid from uksupdb01.epos2000.dbo.Refunds as nat where nat.BranchKey='YR') and branchkey ='yr'
+insert into uksupdb01.epos2000.dbo.RefundDetails
+select * from RefundDetails  where orderid not in
+(select orderid from uksupdb01.epos2000.dbo.RefundDetails as nat where nat.BranchKey='YR') and branchkey ='yr'
+
+insert into uksupdb01.epos2000.dbo.StockTransfer
+select * from StockTransfer  where orderid not in
+(select orderid from uksupdb01.epos2000.dbo.StockTransfer as nat where nat.BranchKey='YR') and branchkey ='yr'
+
+insert into uksupdb01.epos2000.dbo.StockRMADetail
+select * from StockRMADetail  where orderdetailid not in
+(select orderdetailid from uksupdb01.epos2000.dbo.StockRMADetail as nat where nat.BranchKey='YR') and branchkey ='yr'
+
+insert into uksupdb01.epos2000.dbo.WorkORders
+select * from WorkORders  where orderid not in
+(select orderid from uksupdb01.epos2000.dbo.WorkORders as nat where nat.BranchKey='YR') and branchkey ='yr'
